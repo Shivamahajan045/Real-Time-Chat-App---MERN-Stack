@@ -84,4 +84,4 @@ Chakra UI's flexible grid and flexbox components provide a consistent experience
 Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
-*Created by [Shivam Mahajan](https://github.com/Shivamahajan045)* 🚀
+*Created by [Shiva Mahajan](https://github.com/Shivamahajan045)* 🚀

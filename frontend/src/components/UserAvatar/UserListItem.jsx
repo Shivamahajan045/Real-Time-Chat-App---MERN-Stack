@@ -21,15 +21,15 @@ const UserListItem = ({ user, handleFunction }) => {
       borderRadius="lg"
     >
       <Avatar.Root size="sm" mr={2} cursor="pointer">
-        <Avatar.Fallback name={user.name} />
-        <Avatar.Image src={user.pic} />
+        <Avatar.Fallback name={user?.name} />
+        <Avatar.Image src={user?.pic} />
       </Avatar.Root>
 
       <Box>
-        <Text>{user.name}</Text>
+        <Text>{user?.name}</Text>
         <Text fontSize="xs">
           <b>Email: </b>
-          {user.email}
+          {user?.email}
         </Text>
       </Box>
     </Box>
