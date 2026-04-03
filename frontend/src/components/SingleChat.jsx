@@ -11,7 +11,10 @@ import "./styles.css";
 import ScrollableChat from "./ScrollableChat";
 import io from "socket.io-client";
 
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT =
+  window.location.hostname === "localhost"
+    ? "http://localhost:5000"
+    : "https://talk-a-tive-9azh.onrender.com";
 let socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {

@@ -26,7 +26,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "https://talk-a-tive-9azh.onrender.com"],
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -34,16 +34,6 @@ const io = new Server(server, {
 
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json()); // to accept json data from the frontend
-
-app.use("/api/user", userRoutes);
-
-app.use("/api/chat", chatRoutes);
-
-app.use("/api/message", messageRoutes);
-
-app.use("/api/user", userRoutes);
-app.use("/api/chat", chatRoutes);
-app.use("/api/message", messageRoutes);
 
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
