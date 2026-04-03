@@ -70,7 +70,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   }, [selectedChat]);
 
   useEffect(() => {
-    socket.on("message recieved", (newMessageRecieved) => {
+    const messageHandler = (newMessageRecieved) => {
       if (
         !selectedChatCompare ||
         selectedChatCompare._id !== newMessageRecieved.chat._id
@@ -80,12 +80,16 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           setFetchAgain(!fetchAgain);
         }
       } else {
-        setMessages([...messages, newMessageRecieved]);
+        setMessages((prevMessages) => [...prevMessages, newMessageRecieved]);
       }
+    };
 
-      setMessages([...messages, newMessageRecieved]);
-    });
-  });
+    socket.on("message recieved", messageHandler);
+
+    return () => {
+      socket.off("message recieved", messageHandler);
+    };
+  }, [notification, fetchAgain, selectedChat]);
 
   const sendMessage = async (e) => {
     if (e.key === "Enter" && newMessage) {
